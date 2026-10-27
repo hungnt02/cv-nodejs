@@ -1,1343 +1,965 @@
 <!DOCTYPE html>
 <html lang="vi" class="dark scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hưng Nguyễn Tuấn - Back-End Developer Portfolio & CV</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                50: '#ecfdf5',
-                100: '#d1fae5',
-                500: '#10b981',
-                600: '#059669',
-                700: '#047857',
-                800: '#065f46',
-                900: '#064e3b'
-              },
-              darkbg: '#0a0f1d',
-              darkcard: '#111827',
-              darkborder: '#1f293d'
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['Fira Code', 'monospace']
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        darkbg: '#0a0f1d',
+                        darkcard: '#111827',
+                        darkborder: '#1f293d'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
             }
-          }
         }
-      }
     </script>
 
     <style>
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0a0f1d;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #1f293d;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #10b981;
-      }
-
-      /* Glassmorphism background */
-      .glass-panel {
-        background: rgba(17, 24, 39, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .light .glass-panel {
-        background: rgba(255, 255, 255, 0.85);
-        border: 1px solid rgba(0, 0, 0, 0.08);
-      }
-
-      /* Print Stylesheet Optimization */
-      @media print {
-        @page {
-          size: A4;
-          margin: 12mm 15mm;
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        body {
-          background: #ffffff !important;
-          color: #111827 !important;
-          font-size: 11pt !important;
+        ::-webkit-scrollbar-track {
+            background: #0a0f1d;
         }
-        .no-print,
-        nav,
-        #toast,
-        .action-btn,
-        #theme-toggle {
-          display: none !important;
+        .light ::-webkit-scrollbar-track {
+            background: #f1f5f9;
         }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 4px;
+        }
+        .light ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+
+        /* Glassmorphism & Panel Styling for Light and Dark Modes */
         .glass-panel {
-          background: none !important;
-          border: none !important;
-          backdrop-filter: none !important;
-          box-shadow: none !important;
-          padding: 0 !important;
-          margin-bottom: 1rem !important;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
         }
-        .print-border-b {
-          border-bottom: 1.5px solid #d1d5db !important;
-          padding-bottom: 0.5rem !important;
+        .dark .glass-panel {
+            background-color: rgba(17, 24, 39, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-        .text-emerald-400,
-        .text-cyan-400,
-        .text-indigo-400 {
-          color: #047857 !important;
+
+        .inner-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
         }
-        .bg-emerald-500\/10,
-        .bg-emerald-950\/30,
-        .bg-slate-800 {
-          background-color: #f3f4f6 !important;
-          border: 1px solid #e5e7eb !important;
-          color: #1f2937 !important;
+        .dark .inner-card {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid #1f293d;
         }
-        .badge-print {
-          background-color: #f3f4f6 !important;
-          color: #1f2937 !important;
-          border: 1px solid #d1d5db !important;
+
+        /* Modal Overlay */
+        .modal-backdrop {
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(6px);
         }
-        .page-break-inside-avoid {
-          page-break-inside: avoid;
+
+        /* Print Stylesheet Optimization */
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm 12mm;
+            }
+            body {
+                background: #ffffff !important;
+                color: #0f172a !important;
+                font-size: 10.5pt !important;
+            }
+            .no-print, nav, #toast, .action-btn, #theme-toggle, #avatar-edit-overlay, #avatar-modal {
+                display: none !important;
+            }
+            .glass-panel {
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .inner-card {
+                background-color: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+            .print-border-b {
+                border-bottom: 1.5px solid #cbd5e1 !important;
+                padding-bottom: 0.5rem !important;
+            }
+            .text-emerald-400, .text-emerald-600, .text-cyan-400, .text-indigo-400 {
+                color: #047857 !important;
+            }
+            .text-slate-100, .text-slate-200, .text-slate-300, .text-slate-700, .text-slate-800, .text-slate-900 {
+                color: #0f172a !important;
+            }
+            .text-slate-400, .text-slate-500 {
+                color: #475569 !important;
+            }
+            .badge-print {
+                background-color: #f1f5f9 !important;
+                color: #0f172a !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+            .page-break-inside-avoid {
+                page-break-inside: avoid;
+            }
+            .avatar-print {
+                width: 75px !important;
+                height: 75px !important;
+                border-radius: 9999px !important;
+                border: 2px solid #047857 !important;
+            }
         }
-      }
     </style>
-  </head>
-  <body
-    class="bg-darkbg text-slate-200 font-sans transition-colors duration-300 antialiased min-h-screen flex flex-col"
-  >
+</head>
+<body class="bg-slate-50 dark:bg-darkbg text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 antialiased min-h-screen flex flex-col">
+
     <!-- TOP NAVIGATION BAR (NO-PRINT) -->
-    <nav
-      class="sticky top-0 z-50 glass-panel border-b border-slate-800/80 no-print"
-    >
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-          <!-- Brand / Logo -->
-          <div class="flex items-center space-x-3">
-            <span
-              class="w-9 h-9 rounded-lg bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center font-mono font-bold text-slate-900 shadow-lg shadow-emerald-500/20"
-            >
-              HT
-            </span>
-            <div>
-              <span
-                class="font-bold text-slate-100 tracking-tight block text-sm sm:text-base"
-                >Hưng Nguyễn Tuấn</span
-              >
-              <span class="text-xs text-emerald-400 font-mono block sm:inline"
-                >Back-End Developer</span
-              >
+    <nav class="sticky top-0 z-40 glass-panel border-b border-slate-200 dark:border-slate-800/80 no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand / Logo -->
+                <div class="flex items-center space-x-3">
+                    <span class="w-9 h-9 rounded-lg bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center font-mono font-bold text-white shadow-md shadow-emerald-500/20">
+                        HT
+                    </span>
+                    <div>
+                        <span class="font-bold text-slate-900 dark:text-slate-100 tracking-tight block text-sm sm:text-base">Hưng Nguyễn Tuấn</span>
+                        <span class="text-xs text-emerald-600 dark:text-emerald-400 font-mono block sm:inline">Back-End Developer</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                    <a href="#about" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Tóm tắt</a>
+                    <a href="#skills" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Kỹ năng</a>
+                    <a href="#experience" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Kinh nghiệm</a>
+                    <a href="#projects" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Dự án</a>
+                    <a href="#education" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Học vấn</a>
+                </div>
+
+                <!-- Action Controls -->
+                <div class="flex items-center space-x-3">
+                    <!-- Light / Dark Theme Toggle Button -->
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-white transition-all border border-slate-200 dark:border-slate-700" title="Chuyển chế độ Sáng / Tối">
+                        <i class="fa-solid fa-moon text-emerald-500 dark:text-emerald-400" id="theme-icon"></i>
+                    </button>
+
+                    <!-- Export PDF Button -->
+                    <button onclick="window.print()" class="px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs flex items-center space-x-2 transition-all shadow-md shadow-emerald-600/20">
+                        <i class="fa-solid fa-print"></i>
+                        <span class="hidden sm:inline">In / Xuất PDF</span>
+                    </button>
+                </div>
             </div>
-          </div>
-
-          <!-- Navigation Links -->
-          <div
-            class="hidden md:flex items-center space-x-6 text-xs font-medium text-slate-400 uppercase tracking-wider"
-          >
-            <a href="#about" class="hover:text-emerald-400 transition-colors"
-              >Tóm tắt</a
-            >
-            <a href="#skills" class="hover:text-emerald-400 transition-colors"
-              >Kỹ năng</a
-            >
-            <a
-              href="#experience"
-              class="hover:text-emerald-400 transition-colors"
-              >Kinh nghiệm</a
-            >
-            <a href="#projects" class="hover:text-emerald-400 transition-colors"
-              >Dự án</a
-            >
-            <a
-              href="#education"
-              class="hover:text-emerald-400 transition-colors"
-              >Học vấn</a
-            >
-          </div>
-
-          <!-- Action Controls -->
-          <div class="flex items-center space-x-3">
-            <button
-              id="theme-toggle"
-              onclick="toggleTheme()"
-              class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-all border border-slate-700"
-              title="Đổi giao diện Sáng / Tối"
-            >
-              <i class="fa-solid fa-moon text-emerald-400" id="theme-icon"></i>
-            </button>
-
-            <button
-              onclick="window.print()"
-              class="px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs flex items-center space-x-2 transition-all shadow-md shadow-emerald-900/30"
-            >
-              <i class="fa-solid fa-print"></i>
-              <span class="hidden sm:inline">In / Xuất PDF</span>
-            </button>
-          </div>
         </div>
-      </div>
     </nav>
 
     <!-- MAIN CONTAINER -->
-    <main
-      class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10"
-    >
-      <!-- HEADER / HERO SECTION -->
-      <section
-        id="header"
-        class="glass-panel rounded-2xl p-6 sm:p-8 relative overflow-hidden print-border-b"
-      >
-        <!-- Ambient Glow Effect -->
-        <div
-          class="absolute -right-10 -top-10 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none no-print"
-        ></div>
-        <div
-          class="absolute -left-10 -bottom-10 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none no-print"
-        ></div>
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
-        <div
-          class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10"
-        >
-          <div class="space-y-3">
-            <div
-              class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-medium"
-            >
-              <span
-                class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"
-              ></span>
-              <span>Sẵn sàng tiếp nhận công việc mới</span>
-            </div>
+        <!-- HEADER / HERO SECTION WITH PROFILE PICTURE -->
+        <section id="header" class="glass-panel rounded-2xl p-6 sm:p-8 relative overflow-hidden print-border-b">
+            <!-- Ambient Glow Effect (Dark mode only) -->
+            <div class="absolute -right-10 -top-10 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none no-print"></div>
+            <div class="absolute -left-10 -bottom-10 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none no-print"></div>
 
-            <h1
-              class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-100 tracking-tight"
-            >
-              Hưng Nguyễn Tuấn
-            </h1>
-            <p
-              class="text-lg sm:text-xl font-semibold text-emerald-400 font-mono"
-            >
-              Back-End Developer
-              <span class="text-slate-500 text-sm font-sans"
-                >| Microservices & Node.js Specialist</span
-              >
-            </p>
+            <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 relative z-10">
+                
+                <!-- Left Column: Avatar & Info -->
+                <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left w-full md:w-auto">
+                    
+                    <!-- Avatar Frame Container -->
+                    <div class="relative group flex-shrink-0">
+                        <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl p-1 bg-gradient-to-tr from-emerald-500 via-cyan-500 to-indigo-500 shadow-xl shadow-emerald-500/10 avatar-print overflow-hidden">
+                            <img id="avatar-img" 
+                                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" 
+                                 alt="Hưng Nguyễn Tuấn - Profile Picture" 
+                                 class="w-full h-full object-cover rounded-xl bg-slate-200 dark:bg-slate-800">
+                        </div>
 
-            <!-- Quick Location & Contact Info -->
-            <div
-              class="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs sm:text-sm text-slate-300 pt-2"
-            >
-              <div class="flex items-center space-x-2">
-                <i
-                  class="fa-solid fa-location-dot text-emerald-400 w-4 text-center"
-                ></i>
-                <span>Nam Từ Liêm, Hà Nội</span>
-              </div>
-              <div class="flex items-center space-x-2">
-                <i
-                  class="fa-solid fa-phone text-emerald-400 w-4 text-center"
-                ></i>
-                <a
-                  href="tel:0345850918"
-                  class="hover:text-emerald-400 transition-colors font-mono"
-                  >0345850918</a
-                >
-                <button
-                  onclick="copyToClipboard('0345850918', 'Số điện thoại')"
-                  class="text-slate-500 hover:text-emerald-400 transition-colors no-print ml-1"
-                  title="Sao chép SĐT"
-                >
-                  <i class="fa-regular fa-copy"></i>
-                </button>
-              </div>
-              <div class="flex items-center space-x-2">
-                <i
-                  class="fa-solid fa-envelope text-emerald-400 w-4 text-center"
-                ></i>
-                <a
-                  href="mailto:nguyentuanhung12102002@gmail.com"
-                  class="hover:text-emerald-400 transition-colors font-mono"
-                  >nguyentuanhung12102002@gmail.com</a
-                >
-                <button
-                  onclick="copyToClipboard('nguyentuanhung12102002@gmail.com', 'Email')"
-                  class="text-slate-500 hover:text-emerald-400 transition-colors no-print ml-1"
-                  title="Sao chép Email"
-                >
-                  <i class="fa-regular fa-copy"></i>
-                </button>
-              </div>
-              <div class="flex items-center space-x-2">
-                <i
-                  class="fa-brands fa-linkedin text-emerald-400 w-4 text-center"
-                ></i>
-                <a
-                  href="https://www.linkedin.com/in/h%C6%B0ng-nguy%E1%BB%85n-0561b6328"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="hover:text-emerald-400 transition-colors text-xs font-mono"
-                >
-                  LinkedIn Profile
-                  <i
-                    class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
+                        <!-- Status Badge Dot -->
+                        <span class="absolute -bottom-1 -right-1 flex h-4 w-4 no-print" title="Available for hire">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-white dark:border-slate-900"></span>
+                        </span>
 
-          <!-- Stats Badges -->
-          <div
-            class="w-full md:w-auto flex md:flex-col gap-3 justify-stretch pt-4 md:pt-0 border-t md:border-t-0 border-slate-800"
-          >
-            <div
-              class="flex-1 md:w-48 p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 text-center"
-            >
-              <span class="block text-2xl font-bold font-mono text-emerald-400"
-                >2+ Năm</span
-              >
-              <span class="text-xs text-slate-400">Kinh nghiệm Backend</span>
-            </div>
-            <div
-              class="flex-1 md:w-48 p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 text-center"
-            >
-              <span class="block text-2xl font-bold font-mono text-cyan-400"
-                >4+</span
-              >
-              <span class="text-xs text-slate-400">Dự án Enterprise</span>
-            </div>
-          </div>
-        </div>
-      </section>
+                        <!-- Change Avatar Button Overlay (NO-PRINT) -->
+                        <button onclick="openAvatarModal()" id="avatar-edit-overlay" class="no-print absolute inset-0 rounded-2xl bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center text-white text-xs font-medium cursor-pointer backdrop-blur-[2px]">
+                            <i class="fa-solid fa-camera text-base mb-1"></i>
+                            <span>Đổi ảnh</span>
+                        </button>
+                    </div>
 
-      <!-- CAREER OBJECTIVE / TÓM TẮT -->
-      <section
-        id="about"
-        class="glass-panel rounded-2xl p-6 sm:p-8 space-y-4 page-break-inside-avoid"
-      >
-        <div class="flex items-center space-x-3 border-b border-slate-800 pb-3">
-          <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
-            <i class="fa-solid fa-bullseye text-lg"></i>
-          </div>
-          <h2 class="text-xl font-bold text-slate-100 tracking-tight">
-            Mục Tiêu Nghề Nghiệp & Định Hướng
-          </h2>
-        </div>
+                    <!-- Candidate Name & Summary Contact -->
+                    <div class="space-y-3">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-medium">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>Sẵn sàng tiếp nhận công việc mới</span>
+                        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-          <div
-            class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/60 space-y-2"
-          >
-            <h3
-              class="text-sm font-semibold text-emerald-400 font-mono flex items-center space-x-2"
-            >
-              <i class="fa-solid fa-server"></i>
-              <span>Backend Architecture & High Availability</span>
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Tập trung phát triển chuyên sâu về **Node.js, Microservices** và
-              các **hệ thống phân tán (Distributed Systems)**. Định hướng xây
-              dựng các hệ thống Backend đạt hiệu năng cao (High Performance), có
-              khả năng mở rộng quy mô linh hoạt (Scalability) và tối ưu hóa xử
-              lý truy vấn dữ liệu lớn.
-            </p>
-          </div>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
+                            Hưng Nguyễn Tuấn
+                        </h1>
+                        <p class="text-base sm:text-lg font-semibold text-emerald-600 dark:text-emerald-400 font-mono">
+                            Back-End Developer <span class="text-slate-500 dark:text-slate-400 text-sm font-sans">| Microservices & Node.js Specialist</span>
+                        </p>
 
-          <div
-            class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/60 space-y-2"
-          >
-            <h3
-              class="text-sm font-semibold text-cyan-400 font-mono flex items-center space-x-2"
-            >
-              <i class="fa-solid fa-cloud"></i>
-              <span>DevOps Integration & Large-scale Enterprise</span>
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Mở rộng năng lực quản trị hạ tầng với công nghệ **DevOps & Cloud
-              Native** (Docker, Kubernetes, CI/CD) nhằm tối ưu hóa quy trình
-              triển khai và vận hành tự động. Mục tiêu trở thành một **Solid
-              Backend Engineer** đủ năng lực thiết kế kiến trúc cho các hệ thống
-              lớn.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- TECHNICAL SKILLS MATRIX -->
-      <section id="skills" class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
-        <div
-          class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4"
-        >
-          <div class="flex items-center space-x-3">
-            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
-              <i class="fa-solid fa-code text-lg"></i>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-slate-100 tracking-tight">
-                Năng Lực Kỹ Thuật
-              </h2>
-              <p class="text-xs text-slate-400">
-                Phân loại & Bộ kỹ năng chuyên môn Backend
-              </p>
-            </div>
-          </div>
-
-          <!-- Skill Category Filter Tabs (NO-PRINT) -->
-          <div
-            class="flex flex-wrap gap-1.5 text-xs no-print"
-            id="skill-filters"
-          >
-            <button
-              onclick="filterSkills('all')"
-              class="skill-tab active px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-medium transition-all"
-            >
-              Tất cả
-            </button>
-            <button
-              onclick="filterSkills('backend')"
-              class="skill-tab px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all"
-            >
-              Backend & DB
-            </button>
-            <button
-              onclick="filterSkills('distributed')"
-              class="skill-tab px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all"
-            >
-              Phân tán & Messaging
-            </button>
-            <button
-              onclick="filterSkills('devops')"
-              class="skill-tab px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all"
-            >
-              DevOps & Tools
-            </button>
-          </div>
-        </div>
-
-        <!-- Skills Grid Container -->
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-          id="skills-grid"
-        >
-          <!-- Programming Languages -->
-          <div
-            class="skill-card p-4 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3"
-            data-category="backend"
-          >
-            <div class="flex items-center justify-between">
-              <h3
-                class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-2"
-              >
-                <i class="fa-solid fa-terminal text-emerald-400"></i> Ngôn ngữ
-                Lập trình
-              </h3>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-emerald-300 border border-slate-700 font-mono text-xs font-medium"
-                >JavaScript</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-emerald-300 border border-slate-700 font-mono text-xs font-medium"
-                >TypeScript</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >Java</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >C#</span
-              >
-            </div>
-          </div>
-
-          <!-- Backend Frameworks -->
-          <div
-            class="skill-card p-4 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3"
-            data-category="backend"
-          >
-            <h3
-              class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-2"
-            >
-              <i class="fa-solid fa-cubes text-emerald-400"></i> Backend
-              Frameworks
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-emerald-950/40 text-emerald-400 border border-emerald-800/60 font-mono text-xs font-semibold"
-                >Node.js</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-emerald-950/40 text-emerald-400 border border-emerald-800/60 font-mono text-xs font-semibold"
-                >Express.js</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-emerald-950/40 text-emerald-400 border border-emerald-800/60 font-mono text-xs font-semibold"
-                >NestJS</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >RESTful APIs</span
-              >
-            </div>
-          </div>
-
-          <!-- Databases & Caching -->
-          <div
-            class="skill-card p-4 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3"
-            data-category="backend"
-          >
-            <h3
-              class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-2"
-            >
-              <i class="fa-solid fa-database text-cyan-400"></i> Lưu Trữ &
-              Caching
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-cyan-950/40 text-cyan-400 border border-cyan-800/60 font-mono text-xs font-semibold"
-                >Redis</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-cyan-950/40 text-cyan-400 border border-cyan-800/60 font-mono text-xs font-semibold"
-                >MongoDB</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >MySQL</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >PostgreSQL</span
-              >
-            </div>
-          </div>
-
-          <!-- Message Brokers & Streaming -->
-          <div
-            class="skill-card p-4 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3"
-            data-category="distributed"
-          >
-            <h3
-              class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-2"
-            >
-              <i class="fa-solid fa-network-wired text-indigo-400"></i> Message
-              Brokers & Stream
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-indigo-950/40 text-indigo-300 border border-indigo-800/60 font-mono text-xs font-semibold"
-                >Apache Kafka</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-indigo-950/40 text-indigo-300 border border-indigo-800/60 font-mono text-xs font-semibold"
-                >RabbitMQ</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >Elasticsearch</span
-              >
-            </div>
-          </div>
-
-          <!-- Architecture & Performance -->
-          <div
-            class="skill-card p-4 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3"
-            data-category="distributed"
-          >
-            <h3
-              class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-2"
-            >
-              <i class="fa-solid fa-microchip text-amber-400"></i> Hệ Thống Phân
-              Tán
-            </h3>
-            <div class="flex flex-wrap gap-1.5 text-xs text-slate-300">
-              <span
-                class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700"
-                >Microservices</span
-              >
-              <span
-                class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700"
-                >Event-Driven</span
-              >
-              <span
-                class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700"
-                >Query Optimization</span
-              >
-              <span
-                class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700"
-                >Horizontal Scaling</span
-              >
-              <span
-                class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700"
-                >Fault Tolerance</span
-              >
-              <span
-                class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700"
-                >Rate Limiting</span
-              >
-            </div>
-          </div>
-
-          <!-- DevOps & Tools -->
-          <div
-            class="skill-card p-4 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3"
-            data-category="devops"
-          >
-            <h3
-              class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-2"
-            >
-              <i class="fa-brands fa-docker text-blue-400"></i> DevOps & Công Cụ
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-blue-300 border border-slate-700 font-mono text-xs font-medium"
-                >Docker</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >Kubernetes</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >Git / GitLab CI</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >Jenkins</span
-              >
-              <span
-                class="badge-print px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs"
-                >Jira</span
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- Soft Skills Highlight Footer -->
-        <div
-          class="p-4 rounded-xl bg-slate-900/30 border border-slate-800/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3"
-        >
-          <span
-            class="text-xs font-bold uppercase text-slate-400 tracking-wider"
-          >
-            <i class="fa-solid fa-users-gear text-emerald-400 mr-2"></i> Kỹ năng
-            mềm:
-          </span>
-          <div class="flex flex-wrap gap-2 text-xs text-slate-300">
-            <span
-              class="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700"
-              >Giải quyết vấn đề & Tư duy phân tích</span
-            >
-            <span
-              class="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700"
-              >Giao tiếp & Làm việc nhóm hiệu quả</span
-            >
-            <span
-              class="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700"
-              >Tự học & Thích ứng nhanh</span
-            >
-          </div>
-        </div>
-      </section>
-
-      <!-- WORK EXPERIENCE timeline -->
-      <section
-        id="experience"
-        class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6"
-      >
-        <div class="flex items-center space-x-3 border-b border-slate-800 pb-4">
-          <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
-            <i class="fa-solid fa-briefcase text-lg"></i>
-          </div>
-          <div>
-            <h2 class="text-xl font-bold text-slate-100 tracking-tight">
-              Kinh Nghiệm Làm Việc
-            </h2>
-            <p class="text-xs text-slate-400">
-              Lịch sử công tác thực tế tại doanh nghiệp công nghệ
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="relative pl-6 sm:pl-8 border-l-2 border-emerald-500/30 space-y-8"
-        >
-          <!-- EXPERIENCE ITEM: Meey Group -->
-          <div class="relative page-break-inside-avoid">
-            <!-- Timeline Dot -->
-            <div
-              class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-slate-900 shadow-md shadow-emerald-500/50"
-            ></div>
-
-            <div class="space-y-3">
-              <div
-                class="flex flex-col sm:flex-row sm:items-center justify-between gap-1"
-              >
-                <div>
-                  <h3 class="text-lg font-bold text-slate-100">MEEY GROUP</h3>
-                  <p class="text-sm font-mono font-semibold text-emerald-400">
-                    BACK-END DEVELOPER
-                  </p>
+                        <!-- Quick Location & Contact Info -->
+                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-y-2 gap-x-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300 pt-1">
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fa-solid fa-location-dot text-emerald-600 dark:text-emerald-400 w-4 text-center"></i>
+                                <span>Nam Từ Liêm, Hà Nội</span>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fa-solid fa-phone text-emerald-600 dark:text-emerald-400 w-4 text-center"></i>
+                                <a href="tel:0345850918" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-mono">0345850918</a>
+                                <button onclick="copyToClipboard('0345850918', 'Số điện thoại')" class="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors no-print ml-1" title="Sao chép SĐT">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fa-solid fa-envelope text-emerald-600 dark:text-emerald-400 w-4 text-center"></i>
+                                <a href="mailto:nguyentuanhung12102002@gmail.com" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-mono">nguyentuanhung12102002@gmail.com</a>
+                                <button onclick="copyToClipboard('nguyentuanhung12102002@gmail.com', 'Email')" class="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors no-print ml-1" title="Sao chép Email">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fa-brands fa-linkedin text-emerald-600 dark:text-emerald-400 w-4 text-center"></i>
+                                <a href="https://www.linkedin.com/in/h%C6%B0ng-nguy%E1%BB%85n-0561b6328" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-xs font-mono">
+                                    LinkedIn Profile <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs font-medium w-fit"
-                >
-                  <i
-                    class="fa-regular fa-calendar-alt mr-2 text-emerald-400"
-                  ></i
-                  >06/2023 – 05/2025 (2 năm)
+
+                <!-- Right Column: Key Experience Stats -->
+                <div class="w-full md:w-auto flex md:flex-col gap-3 justify-stretch pt-2 md:pt-0 border-t md:border-t-0 border-slate-200 dark:border-slate-800">
+                    <div class="flex-1 md:w-44 p-3 rounded-xl inner-card text-center">
+                        <span class="block text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400">2+ Năm</span>
+                        <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">Kinh nghiệm Backend</span>
+                    </div>
+                    <div class="flex-1 md:w-44 p-3 rounded-xl inner-card text-center">
+                        <span class="block text-2xl font-bold font-mono text-cyan-600 dark:text-cyan-400">4+</span>
+                        <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">Dự án Enterprise</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAREER OBJECTIVE / TÓM TẮT -->
+        <section id="about" class="glass-panel rounded-2xl p-6 sm:p-8 space-y-4 page-break-inside-avoid">
+            <div class="flex items-center space-x-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    <i class="fa-solid fa-bullseye text-lg"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Mục Tiêu Nghề Nghiệp & Định Hướng</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                <div class="p-4 rounded-xl inner-card space-y-2">
+                    <h3 class="text-xs font-bold uppercase text-emerald-700 dark:text-emerald-400 font-mono flex items-center space-x-2">
+                        <i class="fa-solid fa-server"></i>
+                        <span>Backend Architecture & High Availability</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                        Tập trung phát triển chuyên sâu về Node.js, Microservices và các hệ thống phân tán (Distributed Systems). Định hướng xây dựng các hệ thống Backend đạt hiệu năng cao (High Performance), có khả năng mở rộng quy mô linh hoạt (Scalability) và tối ưu hóa xử lý truy vấn dữ liệu lớn.
+                    </p>
+                </div>
+
+                <div class="p-4 rounded-xl inner-card space-y-2">
+                    <h3 class="text-xs font-bold uppercase text-cyan-700 dark:text-cyan-400 font-mono flex items-center space-x-2">
+                        <i class="fa-solid fa-cloud"></i>
+                        <span>DevOps Integration & Cloud Technologies</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                        Mở rộng năng lực quản trị hạ tầng với công nghệ DevOps & Cloud Native (Docker, Kubernetes, CI/CD) nhằm tối ưu hóa quy trình triển khai và vận hành tự động. Mục tiêu trở thành một Solid Backend Engineer đủ năng lực thiết kế kiến trúc cho các hệ thống lớn.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNICAL SKILLS MATRIX -->
+        <section id="skills" class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                        <i class="fa-solid fa-code text-lg"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Năng Lực Kỹ Thuật</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Phân loại & Bộ kỹ năng chuyên môn Backend</p>
+                    </div>
+                </div>
+
+                <!-- Skill Category Filter Tabs (NO-PRINT) -->
+                <div class="flex flex-wrap gap-1.5 text-xs no-print" id="skill-filters">
+                    <button onclick="filterSkills('all', event)" class="skill-tab active px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-medium transition-all shadow-sm">Tất cả</button>
+                    <button onclick="filterSkills('backend', event)" class="skill-tab px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-all">Backend & DB</button>
+                    <button onclick="filterSkills('distributed', event)" class="skill-tab px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-all">Phân tán & Messaging</button>
+                    <button onclick="filterSkills('devops', event)" class="skill-tab px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-all">DevOps & Tools</button>
+                </div>
+            </div>
+
+            <!-- Skills Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="skills-grid">
+
+                <!-- Programming Languages -->
+                <div class="skill-card p-4 rounded-xl inner-card space-y-3" data-category="backend">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-terminal text-emerald-600 dark:text-emerald-400"></i> Ngôn ngữ Lập trình
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-slate-700 font-mono text-xs font-semibold">JavaScript</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-slate-700 font-mono text-xs font-semibold">TypeScript</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">Java</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">C#</span>
+                    </div>
+                </div>
+
+                <!-- Backend Frameworks -->
+                <div class="skill-card p-4 rounded-xl inner-card space-y-3" data-category="backend">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-cubes text-emerald-600 dark:text-emerald-400"></i> Backend Frameworks
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800/60 font-mono text-xs font-bold">Node.js</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800/60 font-mono text-xs font-bold">Express.js</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800/60 font-mono text-xs font-bold">NestJS</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">RESTful APIs</span>
+                    </div>
+                </div>
+
+                <!-- Databases & Caching -->
+                <div class="skill-card p-4 rounded-xl inner-card space-y-3" data-category="backend">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-database text-cyan-600 dark:text-cyan-400"></i> Lưu Trữ & Caching
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-cyan-100 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800/60 font-mono text-xs font-bold">Redis</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-cyan-100 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800/60 font-mono text-xs font-bold">MongoDB</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">MySQL</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <!-- Message Brokers & Streaming -->
+                <div class="skill-card p-4 rounded-xl inner-card space-y-3" data-category="distributed">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-network-wired text-indigo-600 dark:text-indigo-400"></i> Message Brokers & Stream
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800/60 font-mono text-xs font-bold">Apache Kafka</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800/60 font-mono text-xs font-bold">RabbitMQ</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">Elasticsearch</span>
+                    </div>
+                </div>
+
+                <!-- Architecture & Performance -->
+                <div class="skill-card p-4 rounded-xl inner-card space-y-3" data-category="distributed">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-microchip text-amber-600 dark:text-amber-400"></i> Hệ Thống Phân Tán
+                    </h3>
+                    <div class="flex flex-wrap gap-1.5 text-xs text-slate-800 dark:text-slate-300">
+                        <span class="px-2 py-0.5 rounded bg-slate-200/80 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 font-medium">Microservices</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-200/80 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 font-medium">Event-Driven</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-200/80 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 font-medium">Query Optimization</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-200/80 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 font-medium">Horizontal Scaling</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-200/80 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 font-medium">Fault Tolerance</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-200/80 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 font-medium">Rate Limiting</span>
+                    </div>
+                </div>
+
+                <!-- DevOps & Tools -->
+                <div class="skill-card p-4 rounded-xl inner-card space-y-3" data-category="devops">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                        <i class="fa-brands fa-docker text-blue-600 dark:text-blue-400"></i> DevOps & Công Cụ
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-blue-100 dark:bg-slate-800 text-blue-800 dark:text-blue-300 border border-blue-300 dark:border-slate-700 font-mono text-xs font-bold">Docker</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">Kubernetes</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">Git / GitLab CI</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">Jenkins</span>
+                        <span class="badge-print px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono text-xs">Jira</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Soft Skills Highlight Footer -->
+            <div class="p-4 rounded-xl inner-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <span class="text-xs font-bold uppercase text-slate-700 dark:text-slate-400 tracking-wider flex items-center">
+                    <i class="fa-solid fa-users-gear text-emerald-600 dark:text-emerald-400 mr-2"></i> Kỹ năng mềm:
                 </span>
-              </div>
-
-              <!-- Key Responsibilities & Achievements Bullet Points -->
-              <ul class="space-y-2 text-xs sm:text-sm text-slate-300 list-none">
-                <li class="flex items-start space-x-2.5">
-                  <i
-                    class="fa-solid fa-angle-right text-emerald-400 mt-1 flex-shrink-0 text-xs"
-                  ></i>
-                  <span
-                    >Thắt chặt và phát triển các hệ thống **RESTful APIs** quy
-                    mô lớn sử dụng **Node.js, Express.js** và **NestJS** đáp ứng
-                    lượng truy cập ổn định.</span
-                  >
-                </li>
-                <li class="flex items-start space-x-2.5">
-                  <i
-                    class="fa-solid fa-angle-right text-emerald-400 mt-1 flex-shrink-0 text-xs"
-                  ></i>
-                  <span
-                    >Triển khai kiến trúc **Microservices** đảm bảo tính độc
-                    lập, khả năng mở rộng linh hoạt và chịu tải cao cho các phân
-                    hệ chức năng.</span
-                  >
-                </li>
-                <li class="flex items-start space-x-2.5">
-                  <i
-                    class="fa-solid fa-angle-right text-emerald-400 mt-1 flex-shrink-0 text-xs"
-                  ></i>
-                  <span
-                    >Thiết kế cơ chế giao tiếp liên dịch vụ theo mô hình
-                    **Event-driven Architecture** sử dụng **Apache Kafka** và
-                    **RabbitMQ** để xử lý stream dữ liệu thời gian thực.</span
-                  >
-                </li>
-                <li class="flex items-start space-x-2.5">
-                  <i
-                    class="fa-solid fa-angle-right text-emerald-400 mt-1 flex-shrink-0 text-xs"
-                  ></i>
-                  <span
-                    >Quản trị và tối ưu hóa cơ sở dữ liệu đa dạng theo từng dịch
-                    vụ: **MongoDB, MySQL, PostgreSQL**; trực tiếp tối ưu truy
-                    vấn (Query Optimization) nâng cao tốc độ phản hồi API.</span
-                  >
-                </li>
-                <li class="flex items-start space-x-2.5">
-                  <i
-                    class="fa-solid fa-angle-right text-emerald-400 mt-1 flex-shrink-0 text-xs"
-                  ></i>
-                  <span
-                    >Áp dụng giải pháp **Caching chiến lược với Redis** giúp
-                    giảm tải trực tiếp cho DB chính và cải thiện đáng kể thời
-                    gian phản hồi API.</span
-                  >
-                </li>
-                <li class="flex items-start space-x-2.5">
-                  <i
-                    class="fa-solid fa-angle-right text-emerald-400 mt-1 flex-shrink-0 text-xs"
-                  ></i>
-                  <span
-                    >Tích hợp công cụ tìm kiếm **Elasticsearch** nâng cao trải
-                    nghiệm tra cứu thông tin bất động sản tốc độ cao.</span
-                  >
-                </li>
-                <li class="flex items-start space-x-2.5">
-                  <i
-                    class="fa-solid fa-angle-right text-emerald-400 mt-1 flex-shrink-0 text-xs"
-                  ></i>
-                  <span
-                    >Thực thi quy trình phát triển chuyên nghiệp: **Git, Jira,
-                    Code Reviews**, đảm bảo chất lượng mã nguồn sạch và khả năng
-                    bảo trì lâu dài.</span
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROJECTS SECTION -->
-      <section
-        id="projects"
-        class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6"
-      >
-        <div
-          class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4"
-        >
-          <div class="flex items-center space-x-3">
-            <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
-              <i class="fa-solid fa-folder-open text-lg"></i>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-slate-100 tracking-tight">
-                Dự Án Tiêu Biểu
-              </h2>
-              <p class="text-xs text-slate-400">
-                Các sản phẩm Enterprise trong hệ sinh thái Meey Group
-              </p>
-            </div>
-          </div>
-
-          <!-- Project Search Box (NO-PRINT) -->
-          <div class="relative w-full sm:w-64 no-print">
-            <i
-              class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"
-            ></i>
-            <input
-              type="text"
-              id="project-search"
-              oninput="searchProjects()"
-              placeholder="Tìm công nghệ (e.g. Kafka, Redis)..."
-              class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-all"
-            />
-          </div>
-        </div>
-
-        <!-- Projects Grid -->
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-6"
-          id="projects-container"
-        >
-          <!-- Project 1: Meey Land App -->
-          <div
-            class="project-card p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all space-y-4 flex flex-col justify-between page-break-inside-avoid"
-          >
-            <div class="space-y-3">
-              <div class="flex items-start justify-between gap-2">
-                <div>
-                  <span
-                    class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest font-bold"
-                    >Mobile Aggregator App</span
-                  >
-                  <h3
-                    class="text-lg font-bold text-slate-100 flex items-center gap-2"
-                  >
-                    Meey Land App
-                  </h3>
+                <div class="flex flex-wrap gap-2 text-xs text-slate-800 dark:text-slate-300 font-medium">
+                    <span class="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">Giải quyết vấn đề & Tư duy phân tích</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">Giao tiếp & Làm việc nhóm hiệu quả</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">Tự học & Thích ứng nhanh</span>
                 </div>
-                <span
-                  class="px-2 py-1 rounded bg-slate-800 text-[11px] font-mono text-slate-300 border border-slate-700"
-                  >Backend Dev</span
-                >
-              </div>
-
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Ứng dụng di động tổng hợp nhiều dự án khác nhau trong hệ sinh
-                thái Meey Group (Meey Land, Meey Share, Meey AI...).
-              </p>
-
-              <div class="space-y-1.5 pt-1">
-                <h4 class="text-xs font-semibold text-slate-400 font-mono">
-                  Đóng góp kỹ thuật:
-                </h4>
-                <ul
-                  class="text-xs text-slate-300 space-y-1 list-disc list-inside"
-                >
-                  <span
-                    >Xây dựng & lưu trữ dữ liệu với MongoDB bảo đảm tính toàn
-                    vẹn.</span
-                  ><br />
-                  <span>Viết REST APIs chuẩn bằng Node.js & Express.js.</span
-                  ><br />
-                  <span
-                    >Tích hợp các dịch vụ vệ tinh thông qua kiến trúc
-                    Microservices.</span
-                  >
-                </ul>
-              </div>
             </div>
+        </section>
 
-            <!-- Tech Stack Badges -->
-            <div class="space-y-3 pt-3 border-t border-slate-800/80">
-              <div class="flex flex-wrap gap-1.5 tech-tags">
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >TypeScript</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >ExpressJS</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >MongoDB</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-emerald-950/50 text-emerald-400 text-[11px] font-mono border border-emerald-800/50"
-                  >Redis</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-indigo-950/50 text-indigo-300 text-[11px] font-mono border border-indigo-800/50"
-                  >Kafka</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >Docker</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: Meey Land Web Portal -->
-          <div
-            class="project-card p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all space-y-4 flex flex-col justify-between page-break-inside-avoid"
-          >
-            <div class="space-y-3">
-              <div class="flex items-start justify-between gap-2">
-                <div>
-                  <span
-                    class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest font-bold"
-                    >Real Estate Portal</span
-                  >
-                  <h3
-                    class="text-lg font-bold text-slate-100 flex items-center gap-2"
-                  >
-                    Meey Land Portal
-                  </h3>
+        <!-- WORK EXPERIENCE TIMELINE -->
+        <section id="experience" class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
+            <div class="flex items-center space-x-3 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    <i class="fa-solid fa-briefcase text-lg"></i>
                 </div>
-                <a
-                  href="https://meeyland.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="no-print px-2.5 py-1 rounded bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 text-xs font-mono hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-1"
-                >
-                  meeyland.com
-                  <i
-                    class="fa-solid fa-arrow-up-right-from-square text-[10px]"
-                  ></i>
-                </a>
-              </div>
-
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Nền tảng Website & App di động kết nối người đăng tin và khách
-                hàng tìm kiếm bất động sản với quy mô giao dịch lớn.
-              </p>
-
-              <div class="space-y-1.5 pt-1">
-                <h4 class="text-xs font-semibold text-slate-400 font-mono">
-                  Đóng góp kỹ thuật:
-                </h4>
-                <ul class="text-xs text-slate-300 space-y-1">
-                  <li>
-                    • Xây dựng giải pháp lưu trữ MongoDB tối ưu hóa tốc độ
-                    đọc/ghi.
-                  </li>
-                  <li>
-                    • Áp dụng Redis Caching tăng tốc độ xử lý & trải nghiệm
-                    người dùng.
-                  </li>
-                  <li>
-                    • Tích hợp **Kafka** xử lý Stream dữ liệu &
-                    **Elasticsearch** cho truy vấn tìm kiếm nâng cao.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Tech Stack Badges -->
-            <div class="space-y-3 pt-3 border-t border-slate-800/80">
-              <div class="flex flex-wrap gap-1.5 tech-tags">
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >TypeScript</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >ExpressJS</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >MongoDB</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-emerald-950/50 text-emerald-400 text-[11px] font-mono border border-emerald-800/50"
-                  >Redis</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-indigo-950/50 text-indigo-300 text-[11px] font-mono border border-indigo-800/50"
-                  >Kafka</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-indigo-950/50 text-indigo-300 text-[11px] font-mono border border-indigo-800/50"
-                  >RabbitMQ</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-cyan-950/50 text-cyan-300 text-[11px] font-mono border border-cyan-800/50"
-                  >Elasticsearch</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3: Meey Review -->
-          <div
-            class="project-card p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all space-y-4 flex flex-col justify-between page-break-inside-avoid"
-          >
-            <div class="space-y-3">
-              <div class="flex items-start justify-between gap-2">
                 <div>
-                  <span
-                    class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest font-bold"
-                    >Community Forum</span
-                  >
-                  <h3
-                    class="text-lg font-bold text-slate-100 flex items-center gap-2"
-                  >
-                    Meey Review
-                  </h3>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Kinh Nghiệm Làm Việc</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Lịch sử công tác thực tế tại doanh nghiệp công nghệ</p>
                 </div>
-                <a
-                  href="https://meeyreview.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="no-print px-2.5 py-1 rounded bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 text-xs font-mono hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-1"
-                >
-                  meeyreview.com
-                  <i
-                    class="fa-solid fa-arrow-up-right-from-square text-[10px]"
-                  ></i>
-                </a>
-              </div>
-
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Diễn đàn đánh giá, review các dự án bất động sản sử dụng dữ liệu
-                từ hệ sinh thái nội bộ doanh nghiệp.
-              </p>
-
-              <div class="space-y-1.5 pt-1">
-                <h4 class="text-xs font-semibold text-slate-400 font-mono">
-                  Đóng góp kỹ thuật:
-                </h4>
-                <ul class="text-xs text-slate-300 space-y-1">
-                  <li>• Xây dựng hệ thống lưu trữ MongoDB hiệu năng cao.</li>
-                  <li>
-                    • Tận dụng Redis Cache tối ưu hóa thời gian load bài viết &
-                    bình luận.
-                  </li>
-                  <li>
-                    • Sử dụng Kafka để đồng bộ dòng dữ liệu từ hệ thống mẹ.
-                  </li>
-                </ul>
-              </div>
             </div>
 
-            <!-- Tech Stack Badges -->
-            <div class="space-y-3 pt-3 border-t border-slate-800/80">
-              <div class="flex flex-wrap gap-1.5 tech-tags">
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >TypeScript</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >ExpressJS</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >MongoDB</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-emerald-950/50 text-emerald-400 text-[11px] font-mono border border-emerald-800/50"
-                  >Redis</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-indigo-950/50 text-indigo-300 text-[11px] font-mono border border-indigo-800/50"
-                  >Kafka</span
-                >
-              </div>
-            </div>
-          </div>
+            <div class="relative pl-6 sm:pl-8 border-l-2 border-emerald-500/30 space-y-8">
 
-          <!-- Project 4: Meey CRM -->
-          <div
-            class="project-card p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all space-y-4 flex flex-col justify-between page-break-inside-avoid"
-          >
-            <div class="space-y-3">
-              <div class="flex items-start justify-between gap-2">
+                <!-- EXPERIENCE ITEM: Meey Group -->
+                <div class="relative page-break-inside-avoid">
+                    <!-- Timeline Dot -->
+                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-slate-50 dark:border-slate-900 shadow-md shadow-emerald-500/50"></div>
+
+                    <div class="space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <div>
+                                <h3 class="text-lg font-extrabold text-slate-900 dark:text-slate-100">MEEY GROUP</h3>
+                                <p class="text-sm font-mono font-bold text-emerald-600 dark:text-emerald-400">BACK-END DEVELOPER</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-300 font-mono text-xs font-semibold w-fit">
+                                <i class="fa-regular fa-calendar-alt mr-2 text-emerald-600 dark:text-emerald-400"></i>06/2023 – 05/2025 (2 năm)
+                            </span>
+                        </div>
+
+                        <!-- Key Responsibilities & Achievements Bullet Points -->
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 list-none">
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-angle-right text-emerald-600 dark:text-emerald-400 mt-1 flex-shrink-0 text-xs"></i>
+                                <span>Thắt chặt và phát triển các hệ thống RESTful APIs quy mô lớn sử dụng Node.js, Express.js và NestJS đáp ứng lượng truy cập ổn định.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-angle-right text-emerald-600 dark:text-emerald-400 mt-1 flex-shrink-0 text-xs"></i>
+                                <span>Triển khai kiến trúc Microservices đảm bảo tính độc lập, khả năng mở rộng linh hoạt và chịu tải cao cho các phân hệ chức năng.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-angle-right text-emerald-600 dark:text-emerald-400 mt-1 flex-shrink-0 text-xs"></i>
+                                <span>Thiết kế cơ chế giao tiếp liên dịch vụ theo mô hình Event-driven Architecture sử dụng Apache Kafka và RabbitMQ để xử lý stream dữ liệu thời gian thực.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-angle-right text-emerald-600 dark:text-emerald-400 mt-1 flex-shrink-0 text-xs"></i>
+                                <span>Quản trị và tối ưu hóa cơ sở dữ liệu đa dạng theo từng dịch vụ: MongoDB, MySQL, PostgreSQL; trực tiếp tối ưu truy vấn (Query Optimization) nâng cao tốc độ phản hồi API.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-angle-right text-emerald-600 dark:text-emerald-400 mt-1 flex-shrink-0 text-xs"></i>
+                                <span>Áp dụng giải pháp Caching chiến lược với Redis giúp giảm tải trực tiếp cho DB chính và cải thiện đáng kể thời gian phản hồi API.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-angle-right text-emerald-600 dark:text-emerald-400 mt-1 flex-shrink-0 text-xs"></i>
+                                <span>Tích hợp công cụ tìm kiếm Elasticsearch nâng cao trải nghiệm tra cứu thông tin bất động sản tốc độ cao.</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i class="fa-solid fa-angle-right text-emerald-600 dark:text-emerald-400 mt-1 flex-shrink-0 text-xs"></i>
+                                <span>Thực thi quy trình phát triển chuyên nghiệp: Git, Jira, Code Reviews, đảm bảo chất lượng mã nguồn sạch và khả năng bảo trì lâu dài.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                        <i class="fa-solid fa-folder-open text-lg"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Dự Án Tiêu Biểu</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Các sản phẩm Enterprise trong hệ sinh thái Meey Group</p>
+                    </div>
+                </div>
+
+                <!-- Project Search Box (NO-PRINT) -->
+                <div class="relative w-full sm:w-64 no-print">
+                    <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                    <input type="text" id="project-search" oninput="searchProjects()" placeholder="Tìm công nghệ (e.g. Kafka, Redis)..." class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-all shadow-sm">
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-container">
+
+                <!-- Project 1: Meey Land App -->
+                <div class="project-card p-5 rounded-xl inner-card hover:border-emerald-500/50 transition-all space-y-4 flex flex-col justify-between page-break-inside-avoid shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-start justify-between gap-2">
+                            <div>
+                                <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 uppercase tracking-widest font-bold">Mobile Aggregator App</span>
+                                <h3 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                                    Meey Land App
+                                </h3>
+                            </div>
+                            <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-800 text-[11px] font-mono text-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700 font-semibold">Backend Dev</span>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                            Ứng dụng di động tổng hợp nhiều dự án khác nhau trong hệ sinh thái Meey Group (Meey Land, Meey Share, Meey AI...).
+                        </p>
+
+                        <div class="space-y-1.5 pt-1">
+                            <h4 class="text-xs font-bold text-slate-700 dark:text-slate-400 font-mono">Đóng góp kỹ thuật:</h4>
+                            <ul class="text-xs text-slate-700 dark:text-slate-300 space-y-1 list-disc list-inside">
+                                <li>Xây dựng & lưu trữ dữ liệu với MongoDB bảo đảm tính toàn vẹn.</li>
+                                <li>Viết REST APIs chuẩn bằng Node.js & Express.js.</li>
+                                <li>Tích hợp các dịch vụ vệ tinh thông qua kiến trúc Microservices.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="space-y-3 pt-3 border-t border-slate-200 dark:border-slate-800">
+                        <div class="flex flex-wrap gap-1.5 tech-tags">
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">TypeScript</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">ExpressJS</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">MongoDB</span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-400 text-[11px] font-mono border border-emerald-300 dark:border-emerald-800/50 font-semibold">Redis</span>
+                            <span class="px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 text-[11px] font-mono border border-indigo-300 dark:border-indigo-800/50 font-semibold">Kafka</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Meey Land Web Portal -->
+                <div class="project-card p-5 rounded-xl inner-card hover:border-emerald-500/50 transition-all space-y-4 flex flex-col justify-between page-break-inside-avoid shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-start justify-between gap-2">
+                            <div>
+                                <span class="text-[10px] font-mono text-cyan-600 dark:text-cyan-400 uppercase tracking-widest font-bold">Real Estate Portal</span>
+                                <h3 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                                    Meey Land Portal
+                                </h3>
+                            </div>
+                            <a href="https://meeyland.com" target="_blank" rel="noopener noreferrer" class="no-print px-2.5 py-1 rounded bg-emerald-600/10 dark:bg-emerald-600/20 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-1">
+                                meeyland.com <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                            Nền tảng Website & App di động kết nối người đăng tin và khách hàng tìm kiếm bất động sản với quy mô giao dịch lớn.
+                        </p>
+
+                        <div class="space-y-1.5 pt-1">
+                            <h4 class="text-xs font-bold text-slate-700 dark:text-slate-400 font-mono">Đóng góp kỹ thuật:</h4>
+                            <ul class="text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                                <li>• Xây dựng giải pháp lưu trữ MongoDB tối ưu hóa tốc độ đọc/ghi.</li>
+                                <li>• Áp dụng Redis Caching tăng tốc độ xử lý & trải nghiệm người dùng.</li>
+                                <li>• Tích hợp Kafka xử lý Stream dữ liệu & Elasticsearch cho truy vấn tìm kiếm nâng cao.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="space-y-3 pt-3 border-t border-slate-200 dark:border-slate-800">
+                        <div class="flex flex-wrap gap-1.5 tech-tags">
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">TypeScript</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">ExpressJS</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">MongoDB</span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-400 text-[11px] font-mono border border-emerald-300 dark:border-emerald-800/50 font-semibold">Redis</span>
+                            <span class="px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 text-[11px] font-mono border border-indigo-300 dark:border-indigo-800/50 font-semibold">Kafka</span>
+                            <span class="px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 text-[11px] font-mono border border-indigo-300 dark:border-indigo-800/50 font-semibold">RabbitMQ</span>
+                            <span class="px-2 py-0.5 rounded bg-cyan-100 dark:bg-cyan-950/50 text-cyan-800 dark:text-cyan-300 text-[11px] font-mono border border-cyan-300 dark:border-cyan-800/50 font-semibold">Elasticsearch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Meey Review -->
+                <div class="project-card p-5 rounded-xl inner-card hover:border-emerald-500/50 transition-all space-y-4 flex flex-col justify-between page-break-inside-avoid shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-start justify-between gap-2">
+                            <div>
+                                <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 uppercase tracking-widest font-bold">Community Forum</span>
+                                <h3 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                                    Meey Review
+                                </h3>
+                            </div>
+                            <a href="https://meeyreview.com" target="_blank" rel="noopener noreferrer" class="no-print px-2.5 py-1 rounded bg-emerald-600/10 dark:bg-emerald-600/20 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-1">
+                                meeyreview.com <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                            Diễn đàn đánh giá, review các dự án bất động sản sử dụng dữ liệu từ hệ sinh thái nội bộ doanh nghiệp.
+                        </p>
+
+                        <div class="space-y-1.5 pt-1">
+                            <h4 class="text-xs font-bold text-slate-700 dark:text-slate-400 font-mono">Đóng góp kỹ thuật:</h4>
+                            <ul class="text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                                <li>• Xây dựng hệ thống lưu trữ MongoDB hiệu năng cao.</li>
+                                <li>• Tận dụng Redis Cache tối ưu hóa thời gian load bài viết & bình luận.</li>
+                                <li>• Sử dụng Kafka để đồng bộ dòng dữ liệu từ hệ thống mẹ.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="space-y-3 pt-3 border-t border-slate-200 dark:border-slate-800">
+                        <div class="flex flex-wrap gap-1.5 tech-tags">
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">TypeScript</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">ExpressJS</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">MongoDB</span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-400 text-[11px] font-mono border border-emerald-300 dark:border-emerald-800/50 font-semibold">Redis</span>
+                            <span class="px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 text-[11px] font-mono border border-indigo-300 dark:border-indigo-800/50 font-semibold">Kafka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Meey CRM -->
+                <div class="project-card p-5 rounded-xl inner-card hover:border-emerald-500/50 transition-all space-y-4 flex flex-col justify-between page-break-inside-avoid shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-start justify-between gap-2">
+                            <div>
+                                <span class="text-[10px] font-mono text-purple-600 dark:text-purple-400 uppercase tracking-widest font-bold">Enterprise SaaS</span>
+                                <h3 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                                    Meey CRM
+                                </h3>
+                            </div>
+                            <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-800 text-[11px] font-mono text-slate-800 dark:text-slate-300 border border-slate-300 dark:border-slate-700 font-medium">Intern Backend</span>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                            Giải pháp hỗ trợ nhà môi giới bất động sản quản lý quan hệ khách hàng (CRM) và kho hàng hóa.
+                        </p>
+
+                        <div class="space-y-1.5 pt-1">
+                            <h4 class="text-xs font-bold text-slate-700 dark:text-slate-400 font-mono">Đóng góp kỹ thuật:</h4>
+                            <ul class="text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                                <li>• Phát triển & tối ưu hóa API Node.js/Express phục vụ tính năng quản lý khách hàng.</li>
+                                <li>• Sử dụng Redis Caching để tăng tốc truy vấn kho hàng.</li>
+                                <li>• Tiếp cận mô hình Microservices kiến trúc linh hoạt.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="space-y-3 pt-3 border-t border-slate-200 dark:border-slate-800">
+                        <div class="flex flex-wrap gap-1.5 tech-tags">
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">TypeScript</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">ExpressJS</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 text-[11px] font-mono border border-slate-300 dark:border-slate-700 font-medium">MongoDB</span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-400 text-[11px] font-mono border border-emerald-300 dark:border-emerald-800/50 font-semibold">Redis</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="glass-panel rounded-2xl p-6 sm:p-8 space-y-4 page-break-inside-avoid">
+            <div class="flex items-center space-x-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="p-2 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                    <i class="fa-solid fa-graduation-cap text-lg"></i>
+                </div>
                 <div>
-                  <span
-                    class="text-[10px] font-mono text-purple-400 uppercase tracking-widest font-bold"
-                    >Enterprise SaaS</span
-                  >
-                  <h3
-                    class="text-lg font-bold text-slate-100 flex items-center gap-2"
-                  >
-                    Meey CRM
-                  </h3>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Học Vấn & Bằng Cấp</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Nền tảng đào tạo chính quy chuyên ngành CNTT</p>
                 </div>
-                <span
-                  class="px-2 py-1 rounded bg-slate-800 text-[11px] font-mono text-slate-400 border border-slate-700"
-                  >Intern Backend</span
-                >
-              </div>
-
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Giải pháp hỗ trợ nhà môi giới bất động sản quản lý quan hệ khách
-                hàng (CRM) và kho hàng hóa.
-              </p>
-
-              <div class="space-y-1.5 pt-1">
-                <h4 class="text-xs font-semibold text-slate-400 font-mono">
-                  Đóng góp kỹ thuật:
-                </h4>
-                <ul class="text-xs text-slate-300 space-y-1">
-                  <li>
-                    • Phát triển & tối ưu hóa API Node.js/Express phục vụ tính
-                    năng quản lý khách hàng.
-                  </li>
-                  <li>
-                    • Sử dụng Redis Caching để tăng tốc truy vấn kho hàng.
-                  </li>
-                  <li>• Tiếp cận mô hình Microservices kiến trúc linh hoạt.</li>
-                </ul>
-              </div>
             </div>
 
-            <!-- Tech Stack Badges -->
-            <div class="space-y-3 pt-3 border-t border-slate-800/80">
-              <div class="flex flex-wrap gap-1.5 tech-tags">
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >TypeScript</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >ExpressJS</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700"
-                  >MongoDB</span
-                >
-                <span
-                  class="px-2 py-0.5 rounded bg-emerald-950/50 text-emerald-400 text-[11px] font-mono border border-emerald-800/50"
-                  >Redis</span
-                >
-              </div>
+            <div class="p-5 rounded-xl inner-card flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="space-y-1">
+                    <h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100">ĐẠI HỌC MỎ - ĐỊA CHẤT HÀ NỘI (HUMG)</h3>
+                    <p class="text-sm font-bold text-emerald-600 dark:text-emerald-400">Cử nhân Kỹ thuật Phần mềm (Software Engineering)</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">Thời gian đào tạo: 2020 – 2024</p>
+                </div>
+
+                <div class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-center sm:text-right min-w-[140px]">
+                    <span class="text-xs text-slate-600 dark:text-slate-400 font-mono block">Điểm trung bình (GPA)</span>
+                    <span class="text-xl font-bold font-mono text-emerald-700 dark:text-emerald-400">3.26 <span class="text-xs text-slate-500">/ 4.0</span></span>
+                    <span class="text-[10px] text-emerald-700 dark:text-emerald-300 block mt-0.5 font-bold uppercase">Bằng Khá - Giỏi</span>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- EDUCATION SECTION -->
-      <section
-        id="education"
-        class="glass-panel rounded-2xl p-6 sm:p-8 space-y-4 page-break-inside-avoid"
-      >
-        <div class="flex items-center space-x-3 border-b border-slate-800 pb-3">
-          <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400">
-            <i class="fa-solid fa-graduation-cap text-lg"></i>
-          </div>
-          <div>
-            <h2 class="text-xl font-bold text-slate-100 tracking-tight">
-              Học Vấn & Bằng Cấp
-            </h2>
-            <p class="text-xs text-slate-400">
-              Nền tảng đào tạo chính quy chuyên ngành CNTT
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="p-5 rounded-xl bg-slate-900/50 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-        >
-          <div class="space-y-1">
-            <h3 class="text-base font-bold text-slate-100">
-              ĐẠI HỌC MỎ - ĐỊA CHẤT HÀ NỘI (HUMG)
-            </h3>
-            <p class="text-sm font-semibold text-emerald-400">
-              Cử nhân Kỹ thuật Phần mềm (Software Engineering)
-            </p>
-            <p class="text-xs text-slate-400">Thời gian đào tạo: 2020 – 2024</p>
-          </div>
-
-          <div
-            class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-center sm:text-right min-w-[140px]"
-          >
-            <span class="text-xs text-slate-400 font-mono block"
-              >Điểm trung bình (GPA)</span
-            >
-            <span class="text-xl font-bold font-mono text-emerald-400"
-              >3.26 <span class="text-xs text-slate-500">/ 4.0</span></span
-            >
-            <span
-              class="text-[10px] text-emerald-300/80 block mt-0.5 font-medium"
-              >Bằng Khá - Giỏi</span
-            >
-          </div>
-        </div>
-      </section>
     </main>
 
-    <!-- FOOTER (NO-PRINT) -->
-    <footer
-      class="mt-12 border-t border-slate-800/80 glass-panel py-6 no-print"
-    >
-      <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
-        <p class="text-xs text-slate-400 font-mono">
-          &copy; <span id="year">2026</span> Hưng Nguyễn Tuấn - Back-End
-          Developer Portfolio. Built with HTML5 & Tailwind CSS.
-        </p>
-        <div
-          class="flex justify-center items-center space-x-4 text-xs text-slate-500 pt-1"
-        >
-          <a href="#header" class="hover:text-emerald-400 transition-colors"
-            >Về đầu trang <i class="fa-solid fa-arrow-up text-[10px]"></i
-          ></a>
+    <!-- AVATAR CUSTOMIZATION MODAL (NO-PRINT) -->
+    <div id="avatar-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden no-print">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-image text-emerald-600 dark:text-emerald-400"></i>
+                    Thay Đổi Hình Đại Diện CV
+                </h3>
+                <button onclick="closeAvatarModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Upload Methods Tabs -->
+            <div class="space-y-4">
+                <!-- Method 1: Local File Upload -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">Tải ảnh từ máy tính:</label>
+                    <input type="file" id="avatar-file-input" accept="image/*" onchange="handleFileUpload(event)" class="block w-full text-xs text-slate-500 dark:text-slate-400 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 dark:file:bg-emerald-950/50 file:text-emerald-700 dark:file:text-emerald-400 hover:file:bg-emerald-100 border border-slate-300 dark:border-slate-700 rounded-lg p-1">
+                </div>
+
+                <!-- Method 2: Image URL -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">Hoặc dán URL hình ảnh:</label>
+                    <div class="flex gap-2">
+                        <input type="url" id="avatar-url-input" placeholder="https://example.com/photo.jpg" class="flex-grow px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-emerald-500">
+                        <button onclick="applyUrlAvatar()" class="px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-colors">Áp dụng</button>
+                    </div>
+                </div>
+
+                <!-- Method 3: Presets -->
+                <div class="space-y-2 pt-2">
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">Chọn ảnh mẫu Developer:</label>
+                    <div class="grid grid-cols-4 gap-2">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" onclick="setPresetAvatar(this.src)" class="w-16 h-16 rounded-xl object-cover border-2 border-transparent hover:border-emerald-500 cursor-pointer shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" onclick="setPresetAvatar(this.src)" class="w-16 h-16 rounded-xl object-cover border-2 border-transparent hover:border-emerald-500 cursor-pointer shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" onclick="setPresetAvatar(this.src)" class="w-16 h-16 rounded-xl object-cover border-2 border-transparent hover:border-emerald-500 cursor-pointer shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" onclick="setPresetAvatar(this.src)" class="w-16 h-16 rounded-xl object-cover border-2 border-transparent hover:border-emerald-500 cursor-pointer shadow-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
+                <button onclick="resetDefaultAvatar()" class="text-xs text-rose-600 dark:text-rose-400 hover:underline font-medium">Đặt lại ảnh mặc định</button>
+                <button onclick="closeAvatarModal()" class="px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">Đóng</button>
+            </div>
         </div>
-      </div>
+    </div>
+
+    <!-- FOOTER (NO-PRINT) -->
+    <footer class="mt-12 border-t border-slate-200 dark:border-slate-800/80 glass-panel py-6 no-print">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                &copy; <span id="year">2026</span> Hưng Nguyễn Tuấn - Back-End Developer Portfolio. Built with HTML5 & Tailwind CSS.
+            </p>
+            <div class="flex justify-center items-center space-x-4 text-xs text-slate-500 pt-1">
+                <a href="#header" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Về đầu trang <i class="fa-solid fa-arrow-up text-[10px]"></i></a>
+            </div>
+        </div>
     </footer>
 
     <!-- TOAST NOTIFICATION CONTAINER -->
-    <div
-      id="toast"
-      class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none"
-    >
-      <div
-        class="px-4 py-3 rounded-xl bg-slate-900 border border-emerald-500/50 shadow-2xl flex items-center space-x-3 text-slate-100"
-      >
-        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-        <span id="toast-message" class="text-xs sm:text-sm font-medium"
-          >Đã sao chép vào bộ nhớ tạm!</span
-        >
-      </div>
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="px-4 py-3 rounded-xl bg-slate-900 text-white border border-emerald-500/50 shadow-2xl flex items-center space-x-3">
+            <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+            <span id="toast-message" class="text-xs sm:text-sm font-medium">Đã sao chép vào bộ nhớ tạm!</span>
+        </div>
     </div>
 
-    <!-- JAVASCRIPT CODE FOR INTERACTIVITY -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-      // Set dynamic current year in footer
-      document.getElementById('year').textContent = new Date().getFullYear()
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-      // Theme Toggle Logic
-      function toggleTheme() {
-        const html = document.documentElement
-        const icon = document.getElementById('theme-icon')
+        // DEFAULT AVATAR CONSTANT
+        const DEFAULT_AVATAR = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400";
 
-        if (html.classList.contains('dark')) {
-          html.classList.remove('dark')
-          html.classList.add('light')
-          icon.classList.remove('fa-moon', 'text-emerald-400')
-          icon.classList.add('fa-sun', 'text-amber-500')
-          localStorage.setItem('theme', 'light')
-        } else {
-          html.classList.remove('light')
-          html.classList.add('dark')
-          icon.classList.remove('fa-sun', 'text-amber-500')
-          icon.classList.add('fa-moon', 'text-emerald-400')
-          localStorage.setItem('theme', 'dark')
+        // Load Saved Theme and Avatar on Startup
+        window.addEventListener('DOMContentLoaded', () => {
+            // Theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+
+            // Saved Avatar
+            const savedAvatar = localStorage.getItem('candidate_avatar');
+            if (savedAvatar) {
+                document.getElementById('avatar-img').src = savedAvatar;
+            }
+        });
+
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
         }
-      }
 
-      // Copy to Clipboard with Toast Feedback
-      function copyToClipboard(text, label) {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard
-            .writeText(text)
-            .then(() => showToast(`Đã sao chép ${label}: ${text}`))
-        } else {
-          // Fallback method
-          const textArea = document.createElement('textarea')
-          textArea.value = text
-          document.body.appendChild(textArea)
-          textArea.select()
-          try {
-            document.execCommand('copy')
-            showToast(`Đã sao chép ${label}: ${text}`)
-          } catch (err) {
-            showToast(`Không thể tự động sao chép!`)
-          }
-          document.body.removeChild(textArea)
+        function setTheme(mode) {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (mode === 'light') {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.classList.remove('fa-moon', 'text-emerald-400');
+                icon.classList.add('fa-sun', 'text-amber-500');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.classList.remove('fa-sun', 'text-amber-500');
+                icon.classList.add('fa-moon', 'text-emerald-400');
+                localStorage.setItem('theme', 'dark');
+            }
         }
-      }
 
-      function showToast(message) {
-        const toast = document.getElementById('toast')
-        const toastMsg = document.getElementById('toast-message')
-        toastMsg.textContent = message
+        // Avatar Modal Controls
+        function openAvatarModal() {
+            document.getElementById('avatar-modal').classList.remove('hidden');
+        }
 
-        toast.classList.remove('translate-y-20', 'opacity-0')
-        toast.classList.add('translate-y-0', 'opacity-100')
+        function closeAvatarModal() {
+            document.getElementById('avatar-modal').classList.add('hidden');
+        }
 
-        setTimeout(() => {
-          toast.classList.remove('translate-y-0', 'opacity-100')
-          toast.classList.add('translate-y-20', 'opacity-0')
-        }, 3000)
-      }
+        function updateAvatarSrc(newSrc) {
+            document.getElementById('avatar-img').src = newSrc;
+            localStorage.setItem('candidate_avatar', newSrc);
+            showToast('Đã cập nhật hình đại diện thành công!');
+            closeAvatarModal();
+        }
 
-      // Filter Skills by Category
-      function filterSkills(category) {
-        const cards = document.querySelectorAll('.skill-card')
-        const buttons = document.querySelectorAll('.skill-tab')
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    updateAvatarSrc(e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
 
-        buttons.forEach((btn) => {
-          btn.classList.remove('bg-emerald-600', 'text-white', 'active')
-          btn.classList.add('bg-slate-800', 'text-slate-300')
-        })
+        function applyUrlAvatar() {
+            const urlInput = document.getElementById('avatar-url-input').value.trim();
+            if (urlInput) {
+                updateAvatarSrc(urlInput);
+                document.getElementById('avatar-url-input').value = '';
+            } else {
+                showToast('Vui lòng nhập đường dẫn URL hợp lệ!');
+            }
+        }
 
-        event.target.classList.remove('bg-slate-800', 'text-slate-300')
-        event.target.classList.add('bg-emerald-600', 'text-white', 'active')
+        function setPresetAvatar(src) {
+            updateAvatarSrc(src);
+        }
 
-        cards.forEach((card) => {
-          if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block'
-          } else {
-            card.style.display = 'none'
-          }
-        })
-      }
+        function resetDefaultAvatar() {
+            updateAvatarSrc(DEFAULT_AVATAR);
+        }
 
-      // Search Projects by Keyword or Tech Stack
-      function searchProjects() {
-        const query = document
-          .getElementById('project-search')
-          .value.toLowerCase()
-        const projectCards = document.querySelectorAll('.project-card')
+        // Copy to Clipboard Helper with Toast
+        function copyToClipboard(text, label) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => showToast(`Đã sao chép ${label}: ${text}`));
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast(`Đã sao chép ${label}: ${text}`);
+                } catch (err) {
+                    showToast(`Không thể sao chép!`);
+                }
+                document.body.removeChild(textArea);
+            }
+        }
 
-        projectCards.forEach((card) => {
-          const textContent = card.textContent.toLowerCase()
-          if (textContent.includes(query)) {
-            card.style.display = 'flex'
-          } else {
-            card.style.display = 'none'
-          }
-        })
-      }
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Skill Categories Filter
+        function filterSkills(category, event) {
+            const cards = document.querySelectorAll('.skill-card');
+            const buttons = document.querySelectorAll('.skill-tab');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-emerald-600', 'text-white', 'active', 'shadow-sm');
+                btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+            });
+
+            if (event && event.target) {
+                event.target.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                event.target.classList.add('bg-emerald-600', 'text-white', 'active', 'shadow-sm');
+            }
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Search Projects
+        function searchProjects() {
+            const query = document.getElementById('project-search').value.toLowerCase();
+            const projectCards = document.querySelectorAll('.project-card');
+
+            projectCards.forEach(card => {
+                const textContent = card.textContent.toLowerCase();
+                if (textContent.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
     </script>
-  </body>
+</body>
 </html>
